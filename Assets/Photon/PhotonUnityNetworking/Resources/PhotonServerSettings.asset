@@ -70,6 +70,9 @@ MonoBehaviour:
   - SetMarkerBlue
   - SetMarkerGreen
   - SetMarkerRed
+  - CreateBrush
+  - NullRenderr
+  - PointToMousePos
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

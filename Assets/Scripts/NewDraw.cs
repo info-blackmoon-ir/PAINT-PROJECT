@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
+using Photon;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class NewDraw : MonoBehaviour
+public class NewDraw : MonoBehaviourPunCallbacks
 {
     public Camera m_camera;
     public GameObject brush;
@@ -26,25 +29,29 @@ public class NewDraw : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            CreateBrush();
+            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+            photonView.RPC("CreateBrush", RpcTarget.AllBuffered, mousePos);
+            //CreateBrush(mousePos);
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
-            PointToMousePos();
+            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+            //PointToMousePos(mousePos,lastPos);
+            photonView.RPC("PointToMousePos", RpcTarget.AllBuffered, mousePos, lastPos);
         }
         else
         {
-            currentLineRenderer = null;
+            photonView.RPC("NullRenderr", RpcTarget.AllBuffered);
         }
     }
-
-    void CreateBrush()
+    [PunRPC]
+    void CreateBrush(Vector2 mousePos)
     {
         GameObject brushInstance = Instantiate(brush);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
 
         //because you gotta have 2 points to start a line renderer, 
-        Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+        
 
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
@@ -58,14 +65,24 @@ public class NewDraw : MonoBehaviour
         currentLineRenderer.SetPosition(positionIndex, pointPos);
     }
 
-    void PointToMousePos()
+
+    [PunRPC]
+    void PointToMousePos(Vector2 _mousePos, Vector2 _lastPos)
     {
-        Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-        if (lastPos != mousePos)
+        
+        if (_lastPos != _mousePos)
         {
-            AddAPoint(mousePos);
-            lastPos = mousePos;
+            AddAPoint(_mousePos);
+            _lastPos = _mousePos;
+            lastPos = _mousePos;
         }
     }
+    
+    [PunRPC]
+    void NullRenderr()
+    {
+        currentLineRenderer = null;
+    }
 
+    
 }

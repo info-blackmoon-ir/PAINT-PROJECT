@@ -88,7 +88,7 @@ public class lobby_Manager : MonoBehaviour
         yield return new WaitForSeconds(4);
         if(PlayerPrefs.GetString(MAP_PROP_KEY) == "Round")
         {
-            PhotonNetwork.LoadLevel("TestScene");
+            PhotonNetwork.LoadLevel("NewDraw");
             Debug.Log("Loading Level : Round");
         }
         else if (PlayerPrefs.GetString(MAP_PROP_KEY) == "Score")
