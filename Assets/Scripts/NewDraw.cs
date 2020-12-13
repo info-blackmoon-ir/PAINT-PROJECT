@@ -39,10 +39,18 @@ public class NewDraw : MonoBehaviourPunCallbacks
             //PointToMousePos(mousePos,lastPos);
             photonView.RPC("PointToMousePos", RpcTarget.AllBuffered, mousePos, lastPos);
         }
-        else
-        {
-            photonView.RPC("NullRenderr", RpcTarget.AllBuffered);
-        }
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    photonView.RPC("NullRenderr", RpcTarget.AllBuffered);
+        //}
+        //else
+        //{
+        //    photonView.RPC("NotNullRenderr", RpcTarget.AllBuffered);
+        //}
+        //else
+        //{
+        //    photonView.RPC("NullRenderr", RpcTarget.AllBuffered);
+        //}
     }
     [PunRPC]
     void CreateBrush(Vector2 mousePos)
@@ -58,6 +66,7 @@ public class NewDraw : MonoBehaviourPunCallbacks
 
     }
 
+    //[PunRPC]
     void AddAPoint(Vector2 pointPos)
     {
         currentLineRenderer.positionCount++;
@@ -83,6 +92,11 @@ public class NewDraw : MonoBehaviourPunCallbacks
     {
         currentLineRenderer = null;
     }
+    //[PunRPC]
+    //void NotNullRenderr()
+    //{
+    //    currentLineRenderer = currentLineRenderer;
+    //}
 
-    
+
 }
