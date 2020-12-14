@@ -67,31 +67,31 @@ public class PaintChoose : MonoBehaviour
         {
             Debug.Log(ch);
         }
-        for (int j = 0; j < charArr.Length; j++)
-        {
-            for (int i = 0; i < englishChars.Length; i++)
-            {     
-                if (englishChars[i] == charArr[j])
-                {
-                    keyboardWords[Mathf.FloorToInt(Random.Range(0f, keyboardWords.Length))].text = englishChars[i].ToString();
-                }
-            }
-        }
+        //for (int j = 0; j < charArr.Length; j++)
+        //{
+        //    for (int i = 0; i < englishChars.Length; i++)
+        //    {     
+        //        if (englishChars[i] == charArr[j])
+        //        {
+        //            keyboardWords[Mathf.FloorToInt(Random.Range(0f, keyboardWords.Length))].text = englishChars[i].ToString();
+        //        }
+        //    }
+        //}
 
         for (int i = 0; i < keyboardWords.Length; i++)
         {
-            if (keyboardWords[i].text == "")
-            {
-                for (int j = 0; j < charArr.Length; j++)
-                {
-                    do
-                    {
-                        remainChars = englishChars[Mathf.FloorToInt(Random.Range(0f,26f))];
-                    } while (remainChars == charArr[j]);
+            //if (keyboardWords[i].text == "")
+            //{
+            //    for (int j = 0; j < charArr.Length; j++)
+            //    {
+            //        do
+            //        {
+            //            remainChars = englishChars[Mathf.FloorToInt(Random.Range(0f,26f))];
+            //        } while (remainChars == charArr[j]);
                     
-                }
-                keyboardWords[i].text = remainChars.ToString();
-            }
+            //    }
+            //    keyboardWords[i].text = remainChars.ToString();
+            //}
         }
     }
     public void ChooseButton2()
@@ -112,25 +112,25 @@ public class PaintChoose : MonoBehaviour
             {
                 if (englishChars[i] == charArr[j])
                 {
-                    keyboardWords[Mathf.FloorToInt(Random.Range(0f, keyboardWords.Length))].text = charArr[j].ToString();
+                    //keyboardWords[Mathf.FloorToInt(Random.Range(0f, keyboardWords.Length))].text = charArr[j].ToString();
                 }
             }
         }
 
         for (int i = 0; i < keyboardWords.Length; i++)
         {
-            if (keyboardWords[i].text == "")
-            {
-                for (int j = 0; j < charArr.Length; j++)
-                {
-                    do
-                    {
-                        remainChars = englishChars[Mathf.FloorToInt(Random.Range(0f, 26f))];
-                    } while (remainChars == charArr[j]);
+            //if (keyboardWords[i].text == "")
+            //{
+            //    for (int j = 0; j < charArr.Length; j++)
+            //    {
+            //        do
+            //        {
+            //            remainChars = englishChars[Mathf.FloorToInt(Random.Range(0f, 26f))];
+            //        } while (remainChars == charArr[j]);
                     
-                }
-                keyboardWords[i].text = remainChars.ToString();
-            }
+            //    }
+            //    keyboardWords[i].text = remainChars.ToString();
+            //}
         }
     }
     public void ChooseButton3()
@@ -147,29 +147,29 @@ public class PaintChoose : MonoBehaviour
         charArr = choosedObjective.ToCharArray();
         for (int j = 0; j < charArr.Length; j++)
         {
-            for (int i = 0; i < englishChars.Length; i++)
-            {
-                if (englishChars[i] == charArr[j])
-                {
-                    keyboardWords[Mathf.FloorToInt(Random.Range(0f, keyboardWords.Length))].text = charArr[j].ToString();
-                }
-            }
+            //for (int i = 0; i < englishChars.Length; i++)
+            //{
+            //    if (englishChars[i] == charArr[j])
+            //    {
+            //        keyboardWords[Mathf.FloorToInt(Random.Range(0f, keyboardWords.Length))].text = charArr[j].ToString();
+            //    }
+            //}
         }
 
         for (int i = 0; i < keyboardWords.Length; i++)
         {
-            if (keyboardWords[i].text == "")
-            {
-                for (int j = 0; j < charArr.Length; j++)
-                {
-                    do
-                    {
-                        remainChars = englishChars[Mathf.FloorToInt(Random.Range(0f, 26f))];
-                    } while (remainChars == charArr[j]);
+            //if (keyboardWords[i].text == "")
+            //{
+            //    for (int j = 0; j < charArr.Length; j++)
+            //    {
+            //        do
+            //        {
+            //            remainChars = englishChars[Mathf.FloorToInt(Random.Range(0f, 26f))];
+            //        } while (remainChars == charArr[j]);
                     
-                }
-                keyboardWords[i].text = remainChars.ToString();
-            }
+            //    }
+            //    keyboardWords[i].text = remainChars.ToString();
+            //}
         }
     }
 
@@ -182,7 +182,7 @@ public class PaintChoose : MonoBehaviour
             {
                 if (englishChars[i] == charArr[j])
                 {
-                    keyboardWords[Mathf.FloorToInt(Random.Range(0f, keyboardWords.Length))].text = charArr[j].ToString();
+                    //keyboardWords[Mathf.FloorToInt(Random.Range(0f, keyboardWords.Length))].text = charArr[j].ToString();
                 }
             }
         }

@@ -8,20 +8,31 @@ public class NewDraw : MonoBehaviourPunCallbacks
     public Camera m_camera;
     public GameObject brush;
     public LayerMask Drawing_Layers;
-
+    public bool isDrawAllowed = true;
     LineRenderer currentLineRenderer;
 
     Vector2 lastPos;
 
-    private void FixedUpdate()
+    private void Update()
     {
         Vector2 mouse_world_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Check if the current mouse position overlaps our image
         Collider2D hit = Physics2D.OverlapPoint(mouse_world_position, Drawing_Layers.value);
-        if (hit != null && hit.transform != null /*&& !iswaitforsec*/ /*&& isDrawAllowed*/)
+        if (hit != null && hit.transform != null && isDrawAllowed && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Drawing();
+            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+            photonView.RPC("CreateBrush", RpcTarget.AllBuffered, mousePos);
+        }
+        else if (hit != null && hit.transform != null && isDrawAllowed && Input.GetKey(KeyCode.Mouse0))
+        {
+            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+            //PointToMousePos(mousePos,lastPos);
+            photonView.RPC("PointToMousePos", RpcTarget.AllBuffered, mousePos, lastPos);
+        }
+        else
+        {
+            //photonView.RPC("NullRenderr", RpcTarget.AllBuffered);
         }
     }
 

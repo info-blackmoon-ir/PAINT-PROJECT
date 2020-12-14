@@ -51,28 +51,8 @@ public class StateManager : MonoBehaviourPunCallbacks
     CurrentState state;
     private void Awake()
     {
-        if (PlayerPrefs.GetString(MAP_PROP_KEY) == "Round")
-        {
-            GameMode_String = "Round";
-        }
-        else if (PlayerPrefs.GetString(MAP_PROP_KEY) == "Score")
-        {
-            GameMode_String = "Score";
-        }
-        else if (PlayerPrefs.GetString(MAP_PROP_KEY) == "Time")
-        {
-            GameMode_String = "Time";
-        }
-        else if (PlayerPrefs.GetString(MAP_PROP_KEY) == "Hads")
-        {
-            GameMode_String = "Hads";
-        }
-        else
-        {
-            Debug.LogError("Somthing Went Wrong");
-            Debug.LogError("Somthing Went Wrong");
-            Debug.LogError("Somthing Went Wrong");
-        }
+      
+        GameMode_String = "Round";
         if(GameMode_String == "Round")
         {
 
@@ -135,31 +115,11 @@ public class StateManager : MonoBehaviourPunCallbacks
     {
         if(Current_Player_ID == My_Profile.UserName)
         {
-            DontToch_Go.SetActive(false);
-            //drawable.isDrawAllowed = true;
-            Board_GO.transform.localScale = new Vector3(1f,1f, 1f);
-            Board_GO.transform.localPosition = new Vector3(0, 0f, 0);
-            Keyboard_GO.SetActive(false);
-            BrushPanel_GO.SetActive(true);
-            for (int i = 0; i < liststodeactive.Length; i++)
-            {
-                liststodeactive[i].SetActive(false);
-            }
-            drawable.isDrawAllowed = true;
+            
         }
         else
         {
-            //drawable.isDrawAllowed = false;
-            DontToch_Go.SetActive(true);
-            Board_GO.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-            Board_GO.transform.localPosition = new Vector3(0, 3f, 0);
-            BrushPanel_GO.SetActive(false);
-            
-            for (int i = 0; i < liststodeactive.Length; i++)
-            {
-                liststodeactive[i].SetActive(true);
-            }
-            drawable.isDrawAllowed = false;
+
         }
         if (paintingslider)
         {
@@ -473,7 +433,7 @@ public class StateManager : MonoBehaviourPunCallbacks
     {
         The_Word = word;
 
-        paintChoose.KeyBoardGenerate(The_Word);
+        //paintChoose.KeyBoardGenerate(The_Word);
         //Close All Panels
         if (My_Profile.IsMasterClient)
         {
@@ -570,24 +530,24 @@ public class StateManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void InitTheBoxes()
     {
-        Keyboard_GO.SetActive(true);
-        GameObject[] boxgo = GameObject.FindGameObjectsWithTag("box");
-        for (int i = 0; i < boxgo.Length; i++)
-        {
-            Destroy(boxgo[i]);
-        }
-        for (int i = 0; i < The_Word.Length; i++)
-        {
-            GameObject go = Instantiate(The_Box, transform.position, Quaternion.identity) as GameObject;
+        //Keyboard_GO.SetActive(true);
+        //GameObject[] boxgo = GameObject.FindGameObjectsWithTag("box");
+        //for (int i = 0; i < boxgo.Length; i++)
+        //{
+        //    Destroy(boxgo[i]);
+        //}
+        //for (int i = 0; i < The_Word.Length; i++)
+        //{
+        //    GameObject go = Instantiate(The_Box, transform.position, Quaternion.identity) as GameObject;
             
-            go.transform.parent = TheBox_Parent.transform;
+        //    go.transform.parent = TheBox_Parent.transform;
             
-            go.GetComponentInChildren<TextMeshProUGUI>().text = "";
-            go.transform.localScale = new Vector3(1, 1, 1);
-            go.transform.position = new Vector3(0, 0, 0);
-            go.transform.localPosition = new Vector3(0, 0, 0);
+        //    go.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        //    go.transform.localScale = new Vector3(1, 1, 1);
+        //    go.transform.position = new Vector3(0, 0, 0);
+        //    go.transform.localPosition = new Vector3(0, 0, 0);
             
-        }
+        //}
     }
     #endregion
 
@@ -694,26 +654,24 @@ public class StateManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void DeletePainting()
     {
-        drawable.ResetCanvas();
+        
         Debug.Log("Reset Board");
     }
 
     public void DeleteButtonsBTN()
     {
-        photonView.RPC("DeleteButtons", RpcTarget.AllBuffered);
+        
     }
 
     [PunRPC]
     void DeleteButtons()
     {
-        Ghabelliyatha ghabelliyatha = GameObject.FindObjectOfType<Ghabelliyatha>();
-        ghabelliyatha.DeleteonWord();
+        
     }
     [PunRPC]
     void ResetButtons()
     {
-        Ghabelliyatha ghabelliyatha = GameObject.FindObjectOfType<Ghabelliyatha>();
-        ghabelliyatha.ResetButtons();
+        
 
     }
     #endregion
@@ -743,7 +701,7 @@ public class StateManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void ResetTimeSlider()
     {
-        paintingslider.value = waitingtimeforpaint;
+        //paintingslider.value = waitingtimeforpaint;
     }
     #endregion
 }
